@@ -1,5 +1,8 @@
 name: Deployment pipeline
 
+env:
+  CONTAINS_SKIP: ${{ contains(github.event.head_commit.message, '#skip') }}
+
 on:
   push:
     branches:
@@ -33,7 +36,10 @@ jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }}
+    if: |
+      ${{ github.event_name == 'push'
+        && github.env.CONTAINS_SKIP == 'false'}}
+    
     concurrency: deploy-group    # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
