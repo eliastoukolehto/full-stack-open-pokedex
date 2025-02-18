@@ -2,10 +2,7 @@ name: Health check
 
 on:
   schedule:
-    - cron:  '20,40,0 * * * *'
-  pull_request:    #remove later
-    branches: [main]    
-    types: [opened, synchronize]
+    - cron:  '0 12 1 * *'
   
 jobs:
   run_health_check:
