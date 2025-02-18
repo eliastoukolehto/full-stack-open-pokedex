@@ -1,3 +1,8 @@
+# Link to other repository:
+https://github.com/eliastoukolehto/fullstackBlogappCICD
+
+
+
 # Full Stack open CI/CD
 
 This repository is used for the CI/CD module of the Full stack open course
