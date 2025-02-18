@@ -1,0 +1,18 @@
+name: Health check
+
+on:
+  schedule:
+    - cron:  '20,40,0 * * * *'
+  pull_request:    #remove later
+    branches: [main]    
+    types: [opened, synchronize]
+  
+jobs:
+  run_health_check:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Check the deployed service URL
+      uses: jtalk/url-health-check-action@v4
+      with:
+        url: https://full-stack-open-pokedex-cool-sound-7678.fly.dev/
+
