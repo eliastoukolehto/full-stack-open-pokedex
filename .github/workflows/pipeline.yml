@@ -53,14 +53,14 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'An new version of PokeDex deployed by ${{ github.event.head_commit.author }}'
+          args: 'An new version of PokeDex deployed by ${{ github.event.head_commit.author.username }}'
       - name: Deployment Failure
         if: failure()
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'Build failed: commit ${{ github.event.head_commit.url }} by ${{ github.event.head_commit.author }} broke the build :('
+          args: 'Build failed: commit ${{ github.event.head_commit.url }} by ${{ github.event.head_commit.author.username }} broke the build :('
 
 
   tag_release:
